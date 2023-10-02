@@ -26,6 +26,8 @@ TextView tvUsername;
 
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -43,8 +45,18 @@ TextView tvUsername;
                 Intent itnLogout = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(itnLogout);
                 break;
-
         }
+
+        // Depend on java sdk version
+
+//        if (item.getItemId() == R.id.back) {
+//            Intent itnBack = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(itnBack);
+//        } else if (item.getItemId() == R.id.logout) {
+//            Intent itnLogout = new Intent(getApplicationContext(), LoginActivity.class);
+//            startActivity(itnLogout);
+//        }
+
         return super.onOptionsItemSelected(item);
     }
 }
