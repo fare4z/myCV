@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,7 +15,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 TextView tvUsername;
-CardView menuNote;
+SharedPreferences sp;
+CardView menuNote,menuFileStorage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,10 +25,9 @@ CardView menuNote;
 
         tvUsername = findViewById(R.id.tvUsername);
         menuNote = findViewById(R.id.menuNote);
-
-        Bundle extras = getIntent().getExtras();
-        String Username = extras.getString("intentUsername");
-
+        menuFileStorage = findViewById(R.id.menuFileStorage);
+        sp = getSharedPreferences("SPLogin", Context.MODE_PRIVATE);
+        String Username = sp.getString("ssUsername","NULL");
         tvUsername.setText("Welcome " + Username);
 
         menuNote.setOnClickListener(new View.OnClickListener() {
@@ -34,10 +37,8 @@ CardView menuNote;
                 startActivity(i);
             }
         });
+
     }
-
-
-
 
 
     @Override

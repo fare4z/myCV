@@ -1,5 +1,4 @@
 package com.fareez.mycv;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -13,7 +12,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,34 +19,35 @@ import java.util.List;
 public class NotaActivity extends AppCompatActivity {
 
     private List<String> tasks;
-    private EditText taskEditText;
-    private Button addButton;
-    private TextView taskListTextView;
+    private EditText etTask;
+    private Button btnAdd;
+    private TextView tvTaskList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nota);
 
-        taskEditText = findViewById(R.id.taskEditText);
-        addButton = findViewById(R.id.addButton);
-        taskListTextView = findViewById(R.id.taskListTextView);
+        etTask = findViewById(R.id.etTask);
+        btnAdd = findViewById(R.id.btnAdd);
+        tvTaskList = findViewById(R.id.tvTaskList);
 
         tasks = loadTasksFromFile();
         updateTaskList();
 
-        addButton.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String task = taskEditText.getText().toString().trim();
+                String task = etTask.getText().toString().trim();
                 if (!task.isEmpty()) {
                     tasks.add(task);
                     saveTasksToFile(tasks);
-                    taskEditText.setText("");
+                    etTask.setText("");
                     updateTaskList();
                 }
             }
         });
+
     }
 
     // Save a list of tasks to a file
@@ -82,12 +81,11 @@ public class NotaActivity extends AppCompatActivity {
         return tasks;
     }
 
-
     private void updateTaskList() {
         StringBuilder taskList = new StringBuilder();
         for (String task : tasks) {
             taskList.append(task).append("\n");
         }
-        taskListTextView.setText(taskList.toString());
+        tvTaskList.setText(taskList.toString());
     }
 }

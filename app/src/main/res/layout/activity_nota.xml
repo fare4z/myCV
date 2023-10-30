@@ -10,26 +10,27 @@
     tools:context=".NotaActivity">
 
     <EditText
-        android:id="@+id/taskEditText"
+        android:id="@+id/etTask"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Add a new task"
+        android:layout_marginBottom="16dp"
         android:background="#ffffff"
-        android:layout_marginBottom="16dp" />
+        android:hint="Add a new note" />
 
     <Button
-        android:id="@+id/addButton"
+        android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Task"
+        android:layout_marginBottom="16dp"
         android:background="#2196F3"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="16dp" />
+        android:text="Add"
+        android:textColor="#ffffff" />
 
     <TextView
-        android:id="@+id/taskListTextView"
+        android:id="@+id/tvTaskList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
         android:background="#ffffff" />
+
 </LinearLayout>
