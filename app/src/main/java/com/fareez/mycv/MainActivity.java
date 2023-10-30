@@ -2,29 +2,41 @@ package com.fareez.mycv;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 TextView tvUsername;
+CardView menuNote;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         tvUsername = findViewById(R.id.tvUsername);
+        menuNote = findViewById(R.id.menuNote);
 
         Bundle extras = getIntent().getExtras();
         String Username = extras.getString("intentUsername");
 
         tvUsername.setText("Welcome " + Username);
 
-
+        menuNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),NotaActivity.class);
+                startActivity(i);
+            }
+        });
     }
+
+
 
 
 
